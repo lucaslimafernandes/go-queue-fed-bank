@@ -1,9 +1,6 @@
 package handler
 
 import (
-	"context"
-
-	"github.com/go-redis/redis/v8"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -17,15 +14,7 @@ func In(c *fiber.Ctx) error {
 
 func Ping(c *fiber.Ctx) error {
 
-	rdb := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "suasenha",
-		DB:       0,
-	})
-
-	ctx := context.Background()
-
-	pong, err := rdb.Ping(ctx).Result()
+	pong, err := RDB.Ping(c.Context()).Result()
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{"status": "error", "message": err, "data": nil})
 	}

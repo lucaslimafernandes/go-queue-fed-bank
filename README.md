@@ -44,3 +44,7 @@ queue-simulator/
 ## Dev
 
 docker run -d --name meu-redis-container -p 6379:6379 --rm -e REDIS_PASSWORD=suasenha redis:7 redis-server --requirepass suasenha
+
+export PORT=":5000"
+export REDIS_PASSWORD=suasenha
+
