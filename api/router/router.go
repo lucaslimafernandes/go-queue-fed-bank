@@ -7,6 +7,11 @@ import (
 
 func SetupRoutes(app *fiber.App) {
 
+	// HealthCheck
+
+	h := app.Group("/")
+	h.Get("", handler.Ping)
+
 	// queues
 	q := app.Group("/queues")
 	q.Post("/", handler.In)
