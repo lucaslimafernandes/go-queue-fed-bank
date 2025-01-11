@@ -15,4 +15,6 @@ func SetupRoutes(app *fiber.App) {
 	// queues
 	q := app.Group("/queues")
 	q.Post("/", handler.In)
+	q.Get("/", handler.Show)
+
 }
